@@ -1,0 +1,35 @@
+{
+  "baseUrl": ".",
+  "include": ["src/**/*", "tests/**/*"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "esnext",
+    "module": "es2015",
+    "paths": {
+      "@/*": ["src/*"],
+      "@": [
+        "src/index.js",
+        "src/index.json",
+        "src/index.vue",
+        "src/index.scss",
+        "src/index.css"
+      ],
+      "@@/*": ["node_modules/ibuild-portal-lte/src/*"],
+      "@@": [
+        "node_modules/ibuild-portal-lte/src/index.js",
+        "node_modules/ibuild-portal-lte/src/index.json",
+        "node_modules/ibuild-portal-lte/src/index.vue",
+        "node_modules/ibuild-portal-lte/src/index.scss",
+        "node_modules/ibuild-portal-lte/src/index.css"
+      ],
+      "@root/*": ["./*"],
+      "@root": [
+        "./index.js",
+        "./index.json",
+        "./index.vue",
+        "./index.scss",
+        "./index.css"
+      ]
+    }
+  }
+}

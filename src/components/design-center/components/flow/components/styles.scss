@@ -1,0 +1,436 @@
+@import '~@/assets/style/var';
+
+.flow-node {
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  width: 100%;
+
+  .node,
+  .branch-node {
+    width: 220px;
+    margin: auto;
+    // border: 1px solid $--background-color;
+    border-radius: $--border-radius-base;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s linear;
+    box-sizing: border-box;
+
+    &:hover {
+      // border-color: $--color-primary-hover;
+      box-shadow: 0 0 3px 1px #60adff;
+    }
+  }
+
+  &.is-active {
+    .node,
+    .branch-node {
+      box-shadow: 0 0 3px 1px #60adff;
+    }
+  }
+
+  .node {
+    &-warning {
+      // box-shadow: none;
+      box-shadow: 0 0 0 1px $--warning-color;
+      // border: 1px solid $--warning-color;
+
+      .node-content-icon {
+        color: $--warning-color;
+      }
+    }
+
+    &-title,
+    &-title-text,
+    &-content {
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex: 1;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    &-branch {
+      flex-direction: column;
+    }
+
+    &-title {
+      color: #fff;
+      padding: 7px 10px;
+      min-height: 28px;
+      background-color: $--color-primary;
+      border-radius: $--border-radius-base $--border-radius-base 0 0;
+      cursor: pointer;
+
+      &-text {
+        flex: 1;
+        justify-content: flex-start;
+
+        span {
+          flex: 1;
+          @include single-line-hide-text($width: 100%);
+        }
+      }
+
+      &-icon {
+        margin-right: 5px;
+      }
+    }
+
+    &-close-icon {
+      position: relative;
+      color: $--background-color;
+      text-decoration: none;
+      z-index: 3;
+
+      &:hover {
+        color: $--background-color--active;
+      }
+    }
+
+    &-content {
+      min-height: 68px;
+      padding: 10px 15px 10px 15px;
+      color: $--color-black;
+      font-size: 14px;
+      border-radius: 0 0 $--border-radius-base $--border-radius-base;
+      background-color: $--color-white;
+      cursor: pointer;
+
+      .error-message {
+        color: $--warning-color;
+      }
+
+      &-text {
+        font-size: 13px;
+        word-break: break-all;
+        line-height: 1.2857142857142858;
+        letter-spacing: 0.004em;
+        @include multiple-line-hide-text($lines: 3);
+      }
+
+      &-icon {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 16px;
+        color: $--color-icon;
+
+        & > .el-icon-arrow-right {
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  .branch-node {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 15px;
+    background-color: $--background-color;
+    cursor: pointer;
+
+    &:hover {
+      .branch-node-icon-close,
+      .branch-node-icon-left,
+      .branch-node-icon-right {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+
+    &-warning {
+      // box-shadow: none;
+      box-shadow: 0 0 0 1px $--warning-color;
+      // border: 1px solid $--warning-color;
+
+      .branch-node-content-text {
+        color: $--warning-color;
+      }
+    }
+
+    &-title,
+    &-inner {
+      position: relative;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    &-title {
+      align-content: center;
+      flex-direction: row;
+    }
+
+    &-title {
+      &-text {
+        @include single-line-hide-text($width: 100%);
+      }
+    }
+
+    &-priority {
+      width: 95px;
+      color: #666;
+      font-size: 12px;
+      line-height: 16px;
+      text-align: right;
+      letter-spacing: 0.2px;
+    }
+
+    &-content {
+      display: block;
+      min-height: 42px;
+      margin-top: 8px;
+      color: $--color-black;
+      // cursor: pointer;
+
+      &-text {
+        @include multiple-line-hide-text($lines: 3);
+        font-size: 13px;
+      }
+    }
+
+    &-icon {
+      &-close,
+      &-left,
+      &-right {
+        visibility: hidden;
+        user-select: none;
+        opacity: 0;
+        cursor: pointer;
+        transition: all 0.25s ease-out;
+      }
+
+      &-close {
+        position: absolute;
+        z-index: 10;
+      }
+
+      &-left,
+      &-right {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        margin-top: -15px;
+        margin-bottom: -15px;
+
+        &:hover {
+          color: $--color-black;
+          background-color: $--background-color--active;
+        }
+      }
+
+      &-left {
+        margin-left: -20px;
+        margin-right: 5px;
+        border-top-left-radius: $--border-radius-base;
+        border-bottom-left-radius: $--border-radius-base;
+      }
+
+      &-right {
+        margin-right: -20px;
+        margin-left: 5px;
+        border-top-right-radius: $--border-radius-base;
+        border-bottom-right-radius: $--border-radius-base;
+      }
+
+      &-close {
+        top: -6.5px;
+        right: -6.5px;
+        color: $--color-icon;
+      }
+    }
+  }
+
+  .end-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-circle {
+      width: 10px;
+      height: 10px;
+      border-radius: 100%;
+      background-color: $--border-color;
+    }
+
+    &-text {
+      margin-top: 5px;
+      color: $--border-color;
+    }
+  }
+
+  &-button {
+    position: relative;
+    padding: 20px 0 30px;
+    margin: auto;
+
+    &--gap {
+      padding: 35px 0 45px;
+    }
+
+    button {
+      position: relative;
+      user-select: none;
+      > .el-icon-plus {
+        font-size: 14px;
+        font-weight: 900;
+      }
+    }
+    @include before-line();
+  }
+
+  .placeholder {
+    color: #bfbfbf;
+  }
+}
+
+.flow-branch {
+  overflow: visible;
+
+  &--gap {
+    margin-top: 14px;
+  }
+
+  &-node {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    // min-height: 270px;
+
+    &-inner {
+      overflow: visible;
+      display: flex;
+      min-height: 150px;
+      height: auto;
+      background-color: $--color-page-background;
+    }
+  }
+
+  &,
+  &-node {
+    display: flex;
+    align-items: center;
+  }
+
+  &-button {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    button {
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &-col {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -$--border-width;
+    margin-bottom: -$--border-width;
+    border-bottom: $--border-width solid #ccc;
+    border-top: $--border-width solid #ccc;
+
+    &-inner {
+      padding-top: 30px;
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+
+    .flow-node-button::before {
+      display: none;
+    }
+
+    &-line {
+      position: absolute;
+      width: 50%;
+      /* to avoid a lighter border line beyond border in page */
+      height: $--border-width * 5;
+      background-color: $--color-page-background;
+
+      &.left {
+        left: -1px;
+      }
+
+      &.right {
+        right: -1px;
+      }
+
+      &.top {
+        top: -($--border-width * 5) / 2 - $--border-width;
+      }
+
+      &.btm {
+        bottom: -($--border-width * 5) / 2 - $--border-width;
+      }
+    }
+
+    @include before-line();
+  }
+}
+
+.flow-type {
+  display: flex;
+  flex-direction: column;
+
+  &-wrapper {
+    padding: 0;
+  }
+
+  &-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    color: $--color-black;
+    text-decoration: none;
+
+    &:hover {
+      color: $--color-black-deep;
+      background-color: $--background-color--active;
+    }
+
+    &__name {
+      flex: 1;
+    }
+
+    &__icon {
+      font-size: 16px;
+      margin-right: 5px;
+    }
+  }
+}
+
+.flow-icon {
+  &__down {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ccc;
+    bottom: -12px;
+    font-size: 30px;
+  }
+}
+
+.flow-layout {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  min-width: min-content;
+  padding-top: $--header-nav-height;
+  padding-bottom: $--header-nav-height;
+}

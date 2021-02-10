@@ -1,0 +1,51 @@
+$--color-primary: #2185f8;
+$--color-black: #33353d;
+$--color-black-deep: #000000;
+$--color-white: #ffffff;
+$--color-icon: #909399;
+$--color-icon-primary: #379ff5;
+$--color-page-background: #e8ebef;
+
+$--border-width: 2px;
+$--border-color: #cacaca;
+$--border-radius-base: 4px;
+
+$--warning-color: red;
+$--background-color: #fff;
+$--background-color--active: #f7f7f7;
+
+$--header-nav-height: 65px;
+
+@mixin before-line() {
+  &::before {
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    margin: auto;
+    width: $--border-width;
+    height: 100%;
+    background-color: $--border-color;
+  }
+}
+
+@mixin single-line-hide-text($width: auto) {
+  max-width: $width;
+  width: $width;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: normal;
+  white-space: nowrap;
+}
+
+@mixin multiple-line-hide-text($lines: 3) {
+  display: -webkit-box;
+  word-wrap: normal;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines;
+  overflow: hidden;
+}

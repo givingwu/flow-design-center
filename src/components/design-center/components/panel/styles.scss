@@ -1,0 +1,141 @@
+@import '~@/assets/style/var';
+
+.flow-panel {
+  margin-top: 5px;
+  font-size: 13px;
+
+  &-popover {
+    padding: 5px 6px;
+    color: $--color-icon;
+  }
+
+  &-block {
+    margin-bottom: 20px;
+  }
+
+  &-hd {
+    color: #33353d;
+    margin-bottom: 6px;
+
+    h4 {
+      margin: auto;
+      color: #33353d;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .el-icon-question {
+      color: #86c965;
+      font-size: 14px;
+      vertical-align: middle;
+    }
+  }
+
+  &-bd {
+    color: #606266;
+
+    .el-tag + .el-tag {
+      margin-left: 5px;
+    }
+
+    .field-name {
+      margin-left: 10px;
+
+      &.is-required {
+        margin-left: 0px;
+
+        &::before {
+          content: '*';
+          color: #f56c6c;
+          margin-right: 4px;
+          width: 5px;
+          flex-wrap: nowrap;
+          flex-shrink: 0;
+        }
+      }
+    }
+    .personal-block {
+      line-height: 20px;
+      margin-top: 20px;
+      .el-button {
+        vertical-align: top;
+        margin-left: 10px;
+      }
+      .scope-node {
+        margin-bottom: 10px;
+        /deep/ .el-tag {
+          &:last-child {
+            display: block;
+            margin: 5px 5px 0 0;
+          }
+        }
+      }
+    }
+  }
+
+  &-checkbox {
+    .el-checkbox {
+      margin-bottom: 5px;
+    }
+
+    &-gap {
+      padding-left: 24px;
+    }
+  }
+
+  &-radios {
+    display: block;
+    // margin-top: 5px;
+
+    .el-tag {
+      padding-left: 8px;
+      padding-right: 8px;
+      color: #3496ff;
+      border-color: #ebf5ff;
+      background-color: #ebf5ff;
+
+      &--mini {
+        font-size: 13px;
+      }
+
+      &__close {
+        margin-left: 6px;
+        transform: scale(1);
+      }
+
+      .el-icon-warning {
+        margin-left: 6px;
+        color: #ff8d3c;
+        font-size: 16px;
+      }
+    }
+
+    .el-tag,
+    .el-radio {
+      margin-top: 10px;
+    }
+
+    .el-radio {
+      &__label {
+        padding-left: 8px;
+      }
+    }
+
+    /* .el-button {
+      margin-left: 8px;
+    } */
+  }
+
+  &-switch {
+    .el-switch {
+      margin-right: 5px;
+    }
+  }
+
+  &-button {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+}
