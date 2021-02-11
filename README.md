@@ -8,8 +8,8 @@
 
 - 内置发起人、审批人、并行分支、条件分支、抄送人等节点
 - 支持自定义节点、扩展节点
-- 内置数据结构(`LinkedList<Node>`, `FlowGraph<Node>`, `Array<Node>`)
-- 支持自定义数据转换，内置 [toJSON]('./src/components/design-center/adapters/toJSON.js'), [toModel]('./src/components/design-center/adapters/toModel.js')
+- 内置两种数据结构(`LinkedList<Node>`, `FlowGraph<Node>`)
+- 支持自定义数据转换，内置 [toJSON](./src/components/design-center/adapters/toJSON.js), [toModel](./src/components/design-center/adapters/toModel.js)
 
 ## Example
 
@@ -23,3 +23,4 @@ npm run serve
 MIT
 
 ## Thanks
+If it has any help, just give me a star to lights up my days.
