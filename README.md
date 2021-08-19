@@ -18,9 +18,15 @@ npm install
 npm run serve
 ```
 
+## Q & A
+
+- Q: 是否可以在公司生产环境使用？
+- A: 你可以大胆的投入生产环境使用，我司已使用此项目两年有余，而且接入到了其他 BU。（期间绘图及数据方面从没有跟我提过 bug, 欢迎来自社区的你提 issue）
+
 ## License
 
 MIT
 
 ## Thanks
+
 If it has any help, just give me a star to lights up my days.
